@@ -1,0 +1,46 @@
+{
+  "name": "anzenza",
+  "version": "1.0.0",
+  "author": {
+    "name": "Tech Tafari",
+    "url": "https://x.com/tech_tafari"
+  },
+  "homepage": "https://github.com/mpiers110/anzenza",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mpiers110/anzenza.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mpiers110/anzenza/issues"
+  },
+  "description": "Anzenza is a CLI tool to install a quick starter project for different templates. ",
+  "type": "module",
+  "bin": {
+    "anzenza": "./index.js"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "starter",
+    "template",
+    "npm",
+    "yarn",
+    "pnpm",
+    "install",
+    "cli",
+    "anzenza",
+    "create-my-app",
+    "create-next-app",
+    "create-react-app"
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "@clack/prompts": "^0.10.1",
+    "axios": "^1.9.0",
+    "execa": "^9.5.3",
+    "picocolors": "^1.1.1",
+    "rimraf": "^6.0.1"
+  }
+}
