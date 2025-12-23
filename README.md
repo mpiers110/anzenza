@@ -1,32 +1,22 @@
-# 🚀 Anzenza
+# Anzenza
 
-A lightning-fast CLI tool to bootstrap your next project with popular templates and starter configurations.
+A node-based CLI tool to bootstrap your next web project with popular templates and starter configurations.
 
 [![npm version](https://badge.fury.io/js/anzenza.svg)](https://badge.fury.io/js/anzenza)
 [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
 
-## ✨ Features
+## Features
 
-- 🎯 **Quick Setup** - Bootstrap projects in seconds
-- 🔧 **Multiple Templates** - Support for various frameworks and tools
-- 📦 **Package Manager Agnostic** - Works with npm, yarn, and pnpm
-- 🎨 **Interactive CLI** - Beautiful prompts powered by @clack/prompts
-- ⚡ **Zero Config** - Just run and go!
+- **Quick Setup** - Bootstrap projects in seconds
+- **Multiple Templates** - Support for various frameworks and tools
+- **Interactive CLI** - Beautiful prompts powered by @clack/prompts
+- **Zero Config** - Just run and go!
 
-## 🛠️ Installation
+## Installation
 
 ### Global Installation
 ```bash
 npm install -g anzenza
-```
-
-### Run Without Installing (Recommended)
-```bash
-npx anzenza
-```
-
-### Alternative Package Managers
-```bash
 # Using Yarn
 yarn global add anzenza
 
@@ -34,16 +24,19 @@ yarn global add anzenza
 pnpm add -g anzenza
 ```
 
-## 🎯 Usage
+### Run Without Installing (Recommended)
+```bash
+npx anzenza
+```
+
+## Usage
 
 Simply run the command and follow the interactive prompts:
 
 ```bash
 anzenza
-```
 
-Or with npx:
-```bash
+# Or with npx:
 npx anzenza
 ```
 
@@ -53,7 +46,7 @@ The CLI will guide you through:
 3. **Package Manager** - Select npm, yarn, or pnpm
 4. **Installation** - Automatically install dependencies
 
-## 📋 Available Templates
+## Available Templates
 
 Anzenza supports a variety of popular templates including:
 
@@ -77,7 +70,7 @@ Anzenza supports a variety of popular templates including:
 - **picocolors** - Terminal colors
 - **rimraf** - Cross-platform rm -rf
 
-## 📖 Examples
+## Examples
 
 ### Creating a React Project
 ```bash
@@ -98,7 +91,7 @@ cd my-next-app
 npm run dev
 ```
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions! Here's how you can help:
 
@@ -115,13 +108,13 @@ To add a new template:
 3. Update this README with the new template info
 4. Submit a PR
 
-## 🐛 Issues & Support
+## Issues & Support
 
 - **Bug Reports**: [GitHub Issues](https://github.com/mpiers110/anzenza/issues)
 - **Feature Requests**: [GitHub Issues](https://github.com/mpiers110/anzenza/issues)
 - **Questions**: [GitHub Discussions](https://github.com/mpiers110/anzenza/discussions)
 
-## 📄 License
+## License
 
 This project is licensed under the ISC License - see the [LICENSE](LICENSE) file for details.
 
