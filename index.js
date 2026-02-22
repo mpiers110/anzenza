@@ -15,7 +15,10 @@ const access = promisify(fs.access);
 const TEMPLATES = [
   { value: "express-backend", label: "Backend(Express.js)" },
   // { value: 'backend-django', label: 'Backend(Django)' },
-  { value: "vite-dashboard-template", label: "Dashboard with Credentials Auth(Vite + React)" },
+  {
+    value: "vite-dashboard-template",
+    label: "Dashboard with Credentials Auth(Vite + React)",
+  },
   { value: "portfolio-template", label: "Developer Portfolio(Vite + React)" },
   // { value: "nextjs", label: "Frontend(Next.js)" },
 ];
@@ -24,14 +27,12 @@ async function main() {
   console.clear();
   console.log(
     color.cyan(`		 
-            :::     ::::    ::: ::::::::: :::::::::: ::::    ::: :::::::::     :::  
-         :+: :+:   :+:+:   :+:      :+:  :+:        :+:+:   :+:      :+:    :+: :+: 
-       +:+   +:+  :+:+:+  +:+     +:+   +:+        :+:+:+  +:+     +:+    +:+   +:+ 
-     +#++:++#++: +#+ +:+ +#+    +#+    +#++:++#   +#+ +:+ +#+    +#+    +#++:++#++: 
-    +#+     +#+ +#+  +#+#+#   +#+     +#+        +#+  +#+#+#   +#+     +#+     +#+  
-   #+#     #+# #+#   #+#+#  #+#      #+#        #+#   #+#+#  #+#      #+#     #+#   
-  ###     ### ###    #### ######### ########## ###    #### ######### ###     ### 
-`)
+      █████  ███    ██ ███████ ███████ ███    ██ ███████  █████  
+     ██   ██ ████   ██    ███  ██      ████   ██    ███  ██   ██ 
+     ███████ ██ ██  ██   ███   █████   ██ ██  ██   ███   ███████ 
+     ██   ██ ██  ██ ██  ███    ██      ██  ██ ██  ███    ██   ██ 
+     ██   ██ ██   ████ ███████ ███████ ██   ████ ███████ ██   ██ 
+`),
   );
 
   p.updateSettings({
@@ -45,8 +46,8 @@ async function main() {
 
   p.intro(
     `${color.bgCyan(
-      color.black(" Starter projects for different templates. ")
-    )}`
+      color.black(" Starter projects for different templates. "),
+    )}`,
   );
   const s = p.spinner();
 
@@ -75,13 +76,23 @@ async function main() {
           message: "Install dependencies?",
           initialValue: true,
         }),
+      packageManager: () =>
+        p.select({
+          message: "Select package manager",
+          initialValue: "pnpm",
+          options: [
+            { value: "npm", label: "npm" },
+            { value: "yarn", label: "yarn" },
+            { value: "pnpm", label: "pnpm" },
+          ],
+        }),
     },
     {
       onCancel: () => {
         p.cancel("Operation cancelled.");
         process.exit(0);
       },
-    }
+    },
   );
 
   // Check if directory already exists
@@ -109,7 +120,6 @@ async function main() {
     default:
       project.repoUrl = "https://github.com/mpiers110/dashboard-template";
       break;
-    
   }
 
   try {
@@ -130,7 +140,7 @@ async function main() {
         "--single-branch",
         project.repoUrl,
         TEMP_DIR,
-      ]
+      ],
       //   { stdio: 'inherit' }
     );
     // Move files to project directory
@@ -143,7 +153,7 @@ async function main() {
     // Cleanup temp directory
     rimraf.sync(TEMP_DIR);
     s.stop(
-      `${project.name} initialized with ${project.type} template successfully`
+      `${project.name} initialized with ${project.type} template successfully`,
     );
   } catch (e) {
     console.error(e);
@@ -155,9 +165,9 @@ async function main() {
     // Install dependencies
     try {
       process.chdir(project.name);
-      s.start("Installing dependencies via pnpm");
-      await execa("pnpm", ["install"]);
-      s.stop("Dependencies installed with pnpm");
+      s.start(`Installing dependencies via ${project.packageManager}`);
+      await execa(project.packageManager, ["install"]);
+      s.stop(`Dependencies installed with ${project.packageManager}`);
     } catch (e) {
       console.error(e);
       s.stop("❌ Error installing dependencies");
@@ -166,15 +176,15 @@ async function main() {
   }
 
   const nextSteps = `cd ${project.name}        \n${
-    project.install ? "" : "pnpm install\n"
-  }pnpm run dev`;
+    project.install ? "" : `${project.packageManager || "pnpm"} install\n`
+  }${project.packageManager || "pnpm"} run dev`;
 
   p.note(nextSteps, "Next steps.");
 
   p.outro(
     `Report bugs or feature requests at ${color.underline(
-      color.cyan("https://github.com/mpiers110/anzenza/issues")
-    )}`
+      color.cyan("https://github.com/mpiers110/anzenza-cli/issues"),
+    )}`,
   );
 }
 
